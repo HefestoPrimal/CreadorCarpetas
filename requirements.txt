@@ -1,0 +1,6 @@
+# Folder Creator – dependencias
+# Tkinter viene incluido con Python 3.x en Windows y macOS.
+# En Linux puede requerir: sudo apt install python3-tk
+
+# No se requieren paquetes externos; todo es stdlib:
+#   tkinter, os, csv, json, pathlib
