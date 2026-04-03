@@ -11,34 +11,19 @@ Aplicación de escritorio en Python + Tkinter para crear múltiples carpetas de 
 
 ---
 
-## ⚙️ Instalación
+## ⚙️ Instalación para desarrollo
 
-### Windows
-```bat
-setup.bat
-```
-
-### macOS / Linux
-```bash
-chmod +x setup.sh
-./setup.sh
-```
-
-Esto verifica Python, tkinter y crea el entorno virtual en `.venv/`.
-
----
-
-## ▶️ Uso
-
-### 1. Activar el entorno virtual
+### 1. Crear entorno virtual
 
 **Windows:**
 ```bat
+python -m venv .venv
 .venv\Scripts\activate
 ```
 
 **macOS / Linux:**
 ```bash
+python3 -m venv .venv
 source .venv/bin/activate
 ```
 
@@ -49,52 +34,57 @@ python app.py
 
 ---
 
+## 📦 Generar ejecutable (.exe / binario)
+
+Con PyInstaller puedes generar un archivo que **no necesita Python instalado** y se puede compartir directamente.
+
+### Windows → genera `dist\FolderCreator.exe`
+```bat
+build.bat
+```
+
+### macOS / Linux → genera `dist/FolderCreator`
+```bash
+chmod +x build.sh && ./build.sh
+```
+
+El script activa el entorno virtual, instala PyInstaller y construye el ejecutable en `dist/`.
+
+**¿Qué compartir?** Solo el archivo `dist/FolderCreator.exe`. Sin Python, sin instalación — doble clic y listo.
+
+---
+
 ## 🗂 Funcionalidades
 
 | Función | Descripción |
 |---|---|
-| **Lista manual** | Agrega/elimina nombres de carpeta con el botón `+ Agregar fila` |
-| **Directorio destino** | Elige la ruta donde se crearán las carpetas (botón *Examinar*) |
-| **Importar CSV** | Carga un `.csv` con nombres separados por comas y los importa a la lista |
-| **Crear carpetas** | Crea todas las carpetas listadas; reporta creadas, omitidas y errores |
+| **Lista manual** | Agrega/elimina nombres con `+ Agregar fila` |
+| **Directorio destino** | Elige la ruta donde se crearán las carpetas |
+| **Importar CSV** | Carga un `.csv` con nombres separados por comas |
+| **Crear carpetas** | Crea todas; reporta creadas, omitidas y errores |
 
 ---
 
 ## 📄 Formato del CSV
 
-El CSV puede tener los nombres en una sola fila separados por comas, o en múltiples filas:
-
 ```
 ventas,marketing,rrhh,finanzas
 ```
 
-También válido:
-```
-ventas
-marketing
-rrhh
-```
-
-Se incluye un archivo `ejemplo.csv` para probar.
-
 ---
 
-## 🗃 Estructura del proyecto
+## 🗃 Estructura
 
 ```
 folder_creator/
-├── app.py          ← Aplicación principal
-├── ejemplo.csv     ← CSV de ejemplo
+├── app.py
+├── icon.ico
+├── folder_creator.spec
+├── build.bat / build.sh
+├── setup.bat / setup.sh
+├── ejemplo.csv
 ├── requirements.txt
-├── setup.bat       ← Setup Windows
-├── setup.sh        ← Setup macOS/Linux
-└── README.md
+├── README.md
+└── .vscode/
 ```
 
----
-
-## 💡 Abriendo en VSCode
-
-1. Abre la carpeta `folder_creator/` en VSCode
-2. Selecciona el intérprete de Python: `.venv/Scripts/python` (Windows) o `.venv/bin/python` (macOS/Linux)
-3. Ejecuta `app.py` con `F5` o la terminal integrada
